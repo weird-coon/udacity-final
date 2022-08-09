@@ -1,0 +1,72 @@
+.form-item {
+  max-width: 220px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-right: 12px;
+  }
+
+  // Customize default date HTML icon
+  input[type='date' i]::-webkit-calendar-picker-indicator {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAABdUlEQVRoge2av07DMBCHP1AlBlYkWBEPwAsgIdGlO2wIXoCHYOABWGGAR2NolkiNEBsTfwbcyIY4idMzvUb3Sae2zuXOP58dN1GgPzOgAL6czV2bFLnj18y9JH6yTYlfswwe+73W+NuCHVkrvpBroOJvebtGJuafaqnxK+Cq6YRFYkIpAavEX7Qp7xqZvv6ppMYPjo9yjXRRuE9/JIqI7xDE4neVckZ4rc+xIabEj/ZXes7nxtaIaiYNbZs0vWpGXZGtf+/FMIKZM5qKmBBtmBBtmBBt5BByAzzSvEct2XM+lxnyi/z7PQHeXZydiM8EeHI+DyvkCvrbNmp92QVugWPgrCXmFDjn5x7jUCBvlKEV2ffO9e13Re4afMQqIrFGKuDI2WmL373n9yyQN0Bian0AL+77Z4vfqzOAN4G8AXb51YYJ0YYJ0cZohPjYk0YNmBBtmBBtmBBtmBBt+HeIJXDAZu3uZVPjhTuQ640GaStdnw2VfANauOMOEfuTdAAAAABJRU5ErkJggg==');
+  }
+
+  .form-control {
+    border-radius: 6px;
+    appearance: none;
+    outline: none;
+    background-color: #fff;
+    border: 1px solid rgb(209, 213, 219);
+    padding: 8px 12px 8px 12px;
+    font-size: 14px;
+    line-height: 1.2;
+    width: 100%;
+    height: 42px;
+    color: #333;
+
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 150ms;
+
+    &:focus {
+      box-shadow: 0 0 3px 0 rgb(49 18 75);
+      border-color: rgb(99, 102, 241);
+    }
+  }
+
+  button {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 44px;
+    height: 44px;
+    padding: 0 46px;
+    background: #31124b;
+    transform: translateY(15px);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 27px;
+    overflow: hidden;
+    transition: all 400ms ease;
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+  }
+
+  &__date input {
+    text-transform: uppercase;
+  }
+}
+
+.form-label {
+  color: #fff;
+  display: inline-block;
+  margin-bottom: 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+}

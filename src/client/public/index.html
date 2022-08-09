@@ -4,9 +4,77 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
+    <link rel="shortcut icon" href="https://www.udacity.com/favicon.ico?v=2" />
+    <title>An awesome travel application</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    Hola
+    <div class="app">
+      <main>
+        <section class="travel-header travel-section">
+          <div class="travel-header__content">
+            <div class="travel-bg">
+              <div class="travel-bg__item"></div>
+              <div class="travel-bg__item"></div>
+              <div class="travel-bg__item"></div>
+            </div>
+            <div class="travel-planner">
+              <div class="travel-planner__content">
+                <div class="travel-planner__head container">
+                  <div class="travel-text"></div>
+                  <h1>Happiness Is Travelling.</h1>
+                </div>
+              </div>
+            </div>
+            <form class="">
+              <div class="travel-planner__form">
+                <div class="form-item form-item__text">
+                  <label for="location" class="form-label">Location</label>
+                  <input
+                    id="location"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter a city (i.e. Rome)"
+                  />
+                </div>
+                <div class="form-item form-item__date">
+                  <label for="start" class="form-label">Start date</label>
+                  <input
+                    id="start"
+                    type="date"
+                    class="form-control"
+                    pattern="\d{4}-\d{2}-\d{2}"
+                  />
+                </div>
+                <div class="form-item form-item__date">
+                  <label for="end" class="form-label">End date</label>
+                  <input
+                    id="end"
+                    type="date"
+                    class="form-control"
+                    pattern="\d{4}-\d{2}-\d{2}"
+                  />
+                </div>
+                <div class="form-item">
+                  <button type="submit">Add a trip</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+        <section class="travel-result travel-section"></section>
+      </main>
+    </div>
   </body>
 </html>
