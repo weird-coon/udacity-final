@@ -1,5 +1,8 @@
 import './assets/styles/index.scss';
 
-import { app } from './app';
+import { handleTripPlanner, init } from './app';
 
-export { app };
+export { handleTripPlanner };
+
+// initial project
+init();

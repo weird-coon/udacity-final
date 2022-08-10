@@ -1,8 +1,12 @@
+/* ==========================================================================
+  # Main application stylesheet
+  ========================================================================== */
 .travel-header {
   width: 100%;
   height: 100vh;
   display: block;
   position: relative;
+
   &__content {
     position: absolute;
     top: 0;
@@ -33,6 +37,7 @@
     border-right: 3px solid;
     display: inline-block;
     padding-right: 4px;
+    user-select: none;
   }
 }
 
@@ -148,5 +153,112 @@
 @keyframes blink-caret {
   50% {
     border-color: transparent;
+  }
+}
+
+.travel-result {
+  // init hide
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  padding: 72px 20px;
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    margin: 0;
+    font-size: 3rem;
+    display: inline-block;
+    line-height: 1;
+    user-select: none;
+    background-repeat: no-repeat;
+    background-size: 120% 0.3em;
+    background-position: 0 92%;
+    background-image: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
+    padding: 0 12px;
+    margin: 0 auto;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__trips {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .empty-planner {
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__icon {
+      width: 72px;
+      height: 72px;
+      background: url('../img/empty.png') no-repeat center;
+      background-size: contain;
+    }
+    &__text {
+      font-size: 20px;
+      line-height: 1.2;
+      text-align: center;
+      margin-top: 16px;
+    }
+  }
+}
+
+/* ==========================================================================
+  #Loading
+  ========================================================================== */
+.loader {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+
+  &:after,
+  &::before {
+    content: '';
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: animloader 2s linear infinite;
+  }
+
+  &::after {
+    animation-delay: 1s;
+  }
+}
+
+#loading {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: rgba(1, 5, 26, 0.4);
+  z-index: 10;
+}
+
+@keyframes animloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
   }
 }

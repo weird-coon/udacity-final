@@ -1,0 +1,162 @@
+/* ==========================================================================
+  # Weather card item
+  ========================================================================== */
+.weather-card {
+  height: 450px;
+  width: 300px;
+  border-radius: 30px;
+  box-shadow: 15px 20px 85px #d7c4bd;
+  overflow: hidden;
+  transition: all 150ms;
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  &__image {
+    height: 40%;
+    background-position: center;
+    position: relative;
+    .location-icon {
+      height: 40px;
+      width: 40px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: inline-block;
+      background: url('../img/location.png') center no-repeat;
+      background-size: contain;
+    }
+    .place {
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #fff;
+      position: absolute;
+      bottom: 60px;
+      right: 20px;
+      z-index: 9;
+      font-weight: 700;
+      text-shadow: rgb(0 0 0 / 1%) 0 0 1px;
+    }
+    &--default {
+      background: url('../img/default.jpg') center no-repeat !important;
+    }
+  }
+
+  &__content {
+    height: 60%;
+    background: #fff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .layer--1,
+    .layer--2,
+    .layer--3 {
+      position: absolute;
+      border-radius: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .layer--1 {
+      height: 400px;
+      width: 290px;
+      top: -40px;
+      left: -120px;
+    }
+    .layer--2 {
+      height: 150px;
+      width: 210px;
+      top: -50px;
+      left: 160px;
+    }
+    .layer--3 {
+      height: 150px;
+      width: 230px;
+      top: -27px;
+      left: 100px;
+    }
+
+    .wave {
+      position: absolute;
+      height: 31px;
+      background-image: url('../img/card-pattern.png');
+      background-position: -110px 0px;
+      background-size: 100%;
+      width: 100%;
+      top: -30px;
+    }
+    .contents {
+      z-index: 9;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      padding-top: 24px;
+      h2 {
+        color: #868383;
+      }
+      h3 {
+        color: #908e8e;
+        text-transform: uppercase;
+      }
+      small {
+        color: #908e8e;
+      }
+
+      .forecast {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 24px;
+        padding: 0 16px;
+        &__item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          span {
+            width: 100%;
+            color: #868383;
+          }
+          img {
+            max-width: 48px;
+            object-fit: contain;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .delete-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 24px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid transparent;
+    transition: all 200ms;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 4px;
+    &:hover {
+      border-color: #908e8e;
+    }
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: url(../img/delete.png) no-repeat center;
+      background-size: contain;
+    }
+  }
+
+  .layer {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(141deg, #f9ebe2 30%, #e7c3bb 75%);
+    position: absolute;
+    opacity: 0.4;
+  }
+}
