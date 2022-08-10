@@ -1,18 +1,15 @@
-// @TODO: node-fetch from v3 is an ESM-only, move v2 -> v3
-const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const path = require('path');
+const getTripInfo = require('./api');
 require('dotenv').config();
 
-// const API_KEY = process.env.API_KEY || '11ef8129a7e40d5168f27585c71adad5';
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 app.use(cors());
 
 /* Middleware*/
-//Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -22,7 +19,21 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve('dist/index.html'));
 });
 
+// 3rd API handle
+app.post('/trip-planner', async (req, res) => {
+  try {
+    const location = encodeURI(req.body.location);
+    const data = await getTripInfo(location);
+    // Send data to client
+    res.send(data);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 // Setting up Node server
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Now app is running on http://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(
+    `\x1b[33mNow app is running on:\x1b[32m http://localhost:${PORT}`,
+  );
 });
