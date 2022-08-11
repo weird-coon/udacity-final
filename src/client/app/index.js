@@ -133,6 +133,7 @@ const setTrips = (trips) => {
  */
 const postData = async (url, data) => {
   try {
+    console.log('url', url);
     const res = await fetch(url, {
       method: 'POST',
       mode: 'cors',
