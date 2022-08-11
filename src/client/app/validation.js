@@ -3,7 +3,7 @@ import dayjs from './helpers/day';
 export const validate = (formData) => {
   const { location, start, end } = formData;
   if (!location || !start || !end) {
-    return `Trip info cannot be blank. Please try again.`;
+    return 'Trip info cannot be blank. Please try again.';
   }
   if (!isValidTripDates(start, end)) {
     return 'Please enter valid date\nCheck your start date / end date then try again';

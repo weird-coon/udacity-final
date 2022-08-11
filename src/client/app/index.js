@@ -40,7 +40,11 @@ export const handleTripPlanner = (e) => {
   // Enabled loading state
   loading.style.display = 'flex';
 
-  postData('/trip-planner', { location: location?.value })
+  const TRIP_API_ENDPOINT = `${
+    APP_ENV === 'development' ? 'http://localhost:8000' : ''
+  }/trip-planner`;
+
+  postData(TRIP_API_ENDPOINT, { location: location?.value })
     .then((res) => {
       if (res.status === 200 && res.data) {
         const trip = {
@@ -133,7 +137,6 @@ const setTrips = (trips) => {
  */
 const postData = async (url, data) => {
   try {
-    console.log('url', url);
     const res = await fetch(url, {
       method: 'POST',
       mode: 'cors',

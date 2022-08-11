@@ -51,6 +51,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "jest": {
+    "testEnvironment": "jsdom",
     "moduleFileExtensions": [
       "js",
       "jsx"
