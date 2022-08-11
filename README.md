@@ -6,11 +6,11 @@ This project requires you to build out a travel app that, at a minimum, obtains 
 
 ### Live preview
 
-https://trip-planner-udacity.netlify.app/
+[https://udacity-trip.herokuapp.com/](https://udacity-trip.herokuapp.com/)
 
 ### Demo
+<img width="1552" alt="image" src="https://user-images.githubusercontent.com/25971333/184067963-7b0a67c9-5b28-4ffd-8b89-a5601368d4b3.png">
 
-<img src="./src/client/assets/img/demo.png" alt="Application screenshot" />
 
 ## Getting started
 
