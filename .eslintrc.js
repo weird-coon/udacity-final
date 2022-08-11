@@ -8,6 +8,7 @@ module.exports = {
     node: true,
     browser: true,
     es6: true,
+    jest: true,
   },
   parserOptions: {
     ecmaVersion: 'latest',
@@ -16,5 +17,8 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 0,
     'no-plusplus': 0,
+  },
+  globals: {
+    APP_ENV: true,
   },
 };
