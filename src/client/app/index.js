@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { renderTripInfo } from './renderView';
 import { validate } from './validation';
 
-const baseAppUrl = APP_ENV === 'production' ? '/' : 'http://localhost:8000';
+const baseAppUrl = '/';
 
 export const id = (elmID) => document.getElementById(elmID);
 const location = id('location');
