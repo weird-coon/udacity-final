@@ -4,20 +4,73 @@ This project requires you to build out a travel app that, at a minimum, obtains 
 
 <img src="./src/client/assets/img/minions.gif" alt="Minions" />
 
-- Live preview url:
+### Live preview
+
+https://trip-planner-udacity.netlify.app/
+
+### Demo
+
+<img src="./src/client/assets/img/demo.png" alt="Application screenshot" />
 
 ## Getting started
 
-#### Production mode
+`cd` into your new folder and run:
 
-#### Development mode
+```bash
+npm install
+```
 
-## Demo
+or prefer Yarn ✨
+
+```bash
+yarn install
+```
+
+### Development mode
+
+Run Server app for same site API:
+
+```bash
+yarn start
+```
+
+Now Server app is running on http://localhost:8000
+and
+
+```bash
+yarn dev
+```
+
+Client app in Development mode, will running on http://localhost:3001 (Webpack port config):
+
+### Production mode
+
+```bash
+yarn build && yarn start
+```
+
+### Unit test
+
+Excute project test with following command:
+
+```bash
+yarn test
+```
+
+That it's!
 
 ## Sources
 
-- Unsplash
+- UI images [Unsplash](https://unsplash.com/)
 - Udacity previous projects source base
-- JS lib,...
+- JS [dayjs](https://day.js.org/) lib, Webpack,...
 
-## Listens
+### 3rd APIs
+
+- National, city,.. from [Geo names API](http://www.geonames.org/)
+- [Weatherbit](https://www.weatherbit.io/) for recent weather
+- Location image [Pixabay](https://pixabay.com/api/docs/)
+
+## License
+
+MIT © [MIT License](LICENSE)
