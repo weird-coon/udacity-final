@@ -4,6 +4,11 @@ module.exports = {
     es2021: true,
   },
   extends: ['eslint:recommended'],
+  env: {
+    node: true,
+    browser: true,
+    es6: true,
+  },
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',

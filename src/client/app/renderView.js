@@ -10,10 +10,10 @@ const renderTripCard = (trip) => {
   return `
     <div class="weather-card" id="card-${trip.id}">
       <div
-      class="weather-card__image${
-        !trip.image.src ? ' weather-card__image--default' : ''
-      }"
-      style="background-image: url(${trip.image.src})"
+        class="weather-card__image${
+          !trip.image.src ? ' weather-card__image--default' : ''
+        }"
+        style="background-image: url(${trip.image.src})"
       >
         <div class="layer"></div>
         <div class="location-icon"></div>
@@ -85,7 +85,7 @@ export const renderTripInfo = (plannerTrips) => {
     return;
   }
 
-  const result = `
+  resultElement.innerHTML = `
     <div class="travel-result__container container">
       <h2>Your Planner Trips</h2>
       <div class="travel-result__trips">
@@ -93,8 +93,6 @@ export const renderTripInfo = (plannerTrips) => {
       </div>
     </div>
   `;
-
-  resultElement.innerHTML = result;
 
   // Attach delete trip event to remove button elm
   plannerTrips.forEach((trip) => {
