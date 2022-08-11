@@ -6,6 +6,7 @@
   height: 100vh;
   display: block;
   position: relative;
+  overflow: hidden;
 
   &__content {
     position: absolute;
@@ -17,7 +18,7 @@
 
   form {
     width: 100%;
-    height: 124px;
+    height: auto;
     background: linear-gradient(to right, #fa9e1b, #8d4fff);
     position: absolute;
     left: 0;
@@ -28,7 +29,7 @@
   h1 {
     font-family: 'DM Serif Display', serif;
     color: #fff;
-    font-size: 48px;
+    font-size: 32px;
     margin: 0;
     margin-top: -16px;
     animation: typing 3.5s steps(30, end), blink-caret 0.8s step-end infinite;
@@ -44,8 +45,8 @@
 .travel-text {
   background: url('../img/text.png') no-repeat center;
   background-size: contain;
-  width: 500px;
-  height: 300px;
+  width: 400px;
+  height: 200px;
 }
 
 .travel-planner {
@@ -72,7 +73,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-top: 24px;
+    padding: 24px 20px 32px;
   }
 }
 
@@ -166,7 +167,7 @@
   h2 {
     font-family: 'DM Serif Display', serif;
     margin: 0;
-    font-size: 3rem;
+    font-size: 2.2rem;
     display: inline-block;
     line-height: 1;
     user-select: none;
@@ -187,7 +188,7 @@
   &__trips {
     margin-top: 48px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1r;
     gap: 20px;
   }
 
@@ -260,5 +261,42 @@
   100% {
     transform: scale(1);
     opacity: 0;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 700px) {
+  .travel-result__trips {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .travel-result {
+    h2 {
+      font-size: 3rem;
+    }
+    &__trips {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .travel-header {
+    h1 {
+      font-size: 48px;
+    }
+    form {
+      height: 124px;
+    }
+  }
+
+  .travel-text {
+    width: 500px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .travel-result__trips {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
