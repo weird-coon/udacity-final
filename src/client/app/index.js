@@ -44,7 +44,6 @@ export const handleTripPlanner = (e) => {
 
   postData('/trip-planner', { location: location?.value })
     .then((res) => {
-      // result.innerHTML = generateResultHTML(res);
       if (res.status === 200 && res.data) {
         const trip = {
           ...res.data,
