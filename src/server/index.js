@@ -19,12 +19,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve('dist/index.html'));
 });
 
-// 3rd API handle
+// Same site API
 app.post('/trip-planner', async (req, res) => {
   try {
     const location = encodeURI(req.body.location);
     const data = await getTripInfo(location);
-    // Send data to client
     res.send(data);
   } catch (err) {
     console.error(err);

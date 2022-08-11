@@ -17,9 +17,9 @@ export const init = () => {
   endDate.min = new Date().toISOString().split('T')[0];
 
   // Get trips from local storage if any
-  const existed = window.localStorage.getItem('tripsPlanner');
-  if (existed) {
-    const existedTrips = JSON.parse(existed);
+  const storageTrips = storagedTrips();
+  if (storageTrips) {
+    const existedTrips = JSON.parse(storageTrips);
     renderTripInfo(existedTrips);
   }
 };
@@ -39,8 +39,6 @@ export const handleTripPlanner = (e) => {
     return;
   }
 
-  // @TODO: make scroll to section
-
   // Enabled loading state
   loading.style.display = 'flex';
 
@@ -53,34 +51,21 @@ export const handleTripPlanner = (e) => {
           id: Date.now(),
           start: dayjs(startDate?.value, 'YYYY-MM-DD').format('YYYY-MM-DD'),
           end: dayjs(endDate?.value, 'YYYY-MM-DD').format('YYYY-MM-DD'),
-          // For client side check existed purpose
-          inputLocation: location?.value,
+          inputLocation: location?.value, // For client side check existed purpose
         };
 
-        const existedTrips = window.localStorage.getItem('tripsPlanner');
+        const storageTrips = storagedTrips();
         // Init trips incase empty existed trips
-        if (!existedTrips) {
-          window.localStorage.setItem('tripsPlanner', JSON.stringify([trip]));
-          renderTripInfo([trip]);
-          clearInputState();
-          resultElement.scrollIntoView({
-            behavior: 'smooth',
-          });
+        if (!storageTrips) {
+          handleTripRerender([trip]);
           return;
         }
 
         // Push new trip to existed trips
-        const existedTripsObj = JSON.parse(existedTrips);
-        existedTripsObj.push(trip);
-        renderTripInfo(existedTripsObj);
-        window.localStorage.setItem(
-          'tripsPlanner',
-          JSON.stringify(existedTripsObj),
-        );
-        clearInputState();
-        resultElement.scrollIntoView({
-          behavior: 'smooth',
-        });
+        const existedTrips = JSON.parse(storageTrips);
+        existedTrips.push(trip);
+
+        handleTripRerender(existedTrips);
       } else {
         if (res?.status && res?.status === 404) {
           alert(res?.message);
@@ -100,22 +85,22 @@ export const handleTripPlanner = (e) => {
 
 export const deleteTrip = (tripID) => {
   if (confirm('Are you sure to delete this item?')) {
-    const existed = window.localStorage.getItem('tripsPlanner');
-    if (!existed) {
+    const storageTrip = storagedTrips();
+    if (!storageTrip) {
       return false;
     }
     // Remove from UI
     id(`card-${tripID}`)?.remove();
     // Remove from local storage
-    const existedTrips = JSON.parse(existed);
+    const existedTrips = JSON.parse(storageTrip);
     const tripIndex = existedTrips.findIndex((trip) => trip.id === tripID);
     existedTrips.splice(tripIndex, 1);
 
     if (existedTrips.length) {
-      window.localStorage.setItem('tripsPlanner', JSON.stringify(existedTrips));
+      setTrips(existedTrips);
     } else {
       renderTripInfo([]);
-      window.localStorage.setItem('tripsPlanner', JSON.stringify([]));
+      setTrips([]);
     }
   }
 };
@@ -124,6 +109,23 @@ const clearInputState = () => {
   location.value = '';
   startDate.value = '';
   endDate.value = '';
+};
+
+const handleTripRerender = (trips) => {
+  setTrips(trips);
+  renderTripInfo(trips);
+  clearInputState();
+  resultElement.scrollIntoView({
+    behavior: 'smooth',
+  });
+};
+
+const storagedTrips = () => {
+  return window.localStorage.getItem('tripsPlanner');
+};
+
+const setTrips = (trips) => {
+  window.localStorage.setItem('tripsPlanner', JSON.stringify(trips));
 };
 
 /**
