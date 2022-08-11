@@ -2,8 +2,6 @@ import dayjs from 'dayjs';
 import { renderTripInfo } from './renderView';
 import { validate } from './validation';
 
-const baseAppUrl = '/';
-
 export const id = (elmID) => document.getElementById(elmID);
 const location = id('location');
 const startDate = id('start');
@@ -135,7 +133,7 @@ const setTrips = (trips) => {
  */
 const postData = async (url, data) => {
   try {
-    const res = await fetch(baseAppUrl + url, {
+    const res = await fetch(url, {
       method: 'POST',
       mode: 'cors',
       credentials: 'same-origin',
