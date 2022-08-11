@@ -8,8 +8,8 @@
   "scripts": {
     "test": "npx jest",
     "start": "node src/server/index.js",
-    "build": "webpack --config webpack.prod.js",
-    "dev": "webpack-dev-server  --config webpack.dev.js --open",
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "dev": "NODE_ENV=development webpack-dev-server  --config webpack.dev.js --open",
     "lint": "eslint --ext .js --ignore-path .gitignore --fix src",
     "format": "prettier .  --write",
     "prepare": "husky install"

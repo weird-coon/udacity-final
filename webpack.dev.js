@@ -11,6 +11,7 @@ module.exports = {
   output: {
     library: 'app',
     libraryTarget: 'var',
+    path: path.resolve(process.cwd(), 'dist'),
   },
   module: {
     rules: [
@@ -33,6 +34,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      APP_ENV: JSON.stringify(process.env.NODE_ENV),
+    }),
     new HtmlWebPackPlugin({
       template: './src/client/public/index.html',
       filename: './index.html',
